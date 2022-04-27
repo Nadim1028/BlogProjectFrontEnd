@@ -6,6 +6,7 @@ import AuthContext from "../auth/AuthContext";
 import Card from "../ui/Card";
 import EditStoryPage from "../pages/EditStoryPage";
 import DeleteStory from "./DeleteStory";
+import EditStoryModal from "../modal/EditStoryModal";
 
 function StoryItem(props) {
 
@@ -22,7 +23,7 @@ function StoryItem(props) {
     console.log("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
     content = (
       <div>
-        <EditStoryPage story={props} />
+        <EditStoryModal story={props} />
         <DeleteStory storyId={props.id} />
       </div>
     );
@@ -66,8 +67,12 @@ function StoryItem(props) {
         <div>{props.body}</div>
         <div><b><i>Author : {author.userName}</i></b></div>
         <div>Published On : {props.publishedDate}</div>
+        {content}
       </Card>
+
+    
     </li>
+    
   );
 }
 

@@ -35,7 +35,7 @@ const EditStoryForm = forwardRef((props, ref) => {
           required
           id="title"
           ref={titleInputRef}
-          defaultValue={props.story.title}
+          defaultValue={props.story.storyTitle}
         />
       </div>
       <div className={classes.control}>
@@ -45,7 +45,7 @@ const EditStoryForm = forwardRef((props, ref) => {
           required
           id="body"
           ref={bodyInputRef}
-          defaultValue={props.story.body}
+          defaultValue={props.story.storyBody}
         />
       </div>
       <div className={classes.control}>
