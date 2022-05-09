@@ -30,12 +30,14 @@ function LoginUserPage() {
         localStorage.setItem("token", data.token);
 
         const user = jwt(data.token);
-        console.log(user);
+
+        console.log("Username from Login",user.UserName);
+        console.log("UserId from Login",user.AuthorId);
 
         //console.log("un", localStorage.getItem("userName"));
         //console.log("tn", localStorage.getItem("token"));
 
-        localStorage.setItem("userName", user.userName);
+        localStorage.setItem("userName", user.UserName);
         localStorage.setItem("userId", user.AuthorId);
 
         authCtx.addCredentials({

@@ -9,6 +9,10 @@ import LoginUserPage from './pages/LoginUserPage';
 import { useContext, useEffect } from "react";
 import AuthContext from './auth/AuthContext';
 import NewStoryPage from './pages/NewStoryPage';
+import SearchPage from './pages/SearchPage';
+import ProtectedRoutes from './auth/ProtectedRoutes';
+import MyStoriesPage from './pages/MyStoriesPage';
+
 function App() {
 
   const authCtx = useContext(AuthContext);
@@ -34,7 +38,12 @@ function App() {
           <Route path="/" element={<AllStoriesPage/>} />
           <Route path="/register" element={<RegisterUserPage/>} />
           <Route path="/login" element={<LoginUserPage/>} />
+
+          <Route element={<ProtectedRoutes />}>
           <Route path="/new-story" element={<NewStoryPage />} />
+          <Route path="/my-story" element={<MyStoriesPage />} />
+          <Route path="/search" element={<SearchPage />} />
+        </Route>
       </Routes>
   </Layout>
   );

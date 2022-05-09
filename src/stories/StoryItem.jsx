@@ -16,11 +16,11 @@ function StoryItem(props) {
   let content;
 
 
-  console.log("TokenId = "+parseInt(authCtx.userId));
-  console.log("storyAuthorId = "+props.authorId)
+  //console.log("TokenId = "+parseInt(authCtx.userId));
+ //console.log("storyAuthorId = "+props.authorId)
  // console.log("TokenId = "+authCtx.userId+"  localId = "+props.authorId);
+ 
   if (parseInt(authCtx.userId) === props.authorId) {
-    console.log("IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII")
     content = (
       <div>
         <EditStoryModal story={props} />

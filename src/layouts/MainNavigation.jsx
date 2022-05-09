@@ -1,53 +1,65 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import { Nav, Navbar, Container } from "react-bootstrap";
+
 import AuthContext from "../auth/AuthContext";
 import Logout from "../auth/Logout";
 
-import classes from "./MainNavigation.module.css";
-
-function MainNavigation() 
-{
+function MainNavigation() {
   const authCtx = useContext(AuthContext);
 
-  const loggedIn = authCtx.userName !== "" && authCtx.token !== "";
+  const loggedIn = authCtx.username !== "" && authCtx.token !== "";
 
   let content;
 
   if (loggedIn) {
     content = (
-      <ul>
-        <li>
-          <Link to="/">Blog Stories</Link>
-        </li>
-        <li>
-          <Link to="/new-story">Create Story</Link>
-        </li>
-      </ul>
+      <Nav>
+        <Nav.Link as={NavLink} to="/">
+          All Stories
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/my-story">
+          My Stories
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/new-story">
+          Add New Story
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/search">
+          Search
+        </Nav.Link>
+      </Nav>
     );
   }
 
   if (!loggedIn) {
     content = (
-      <ul>
-        <li>
-          <Link to="/">Blog Stories</Link>
-        </li>
-        <li>
-          <Link to="/register">Register</Link>
-        </li>
-        <li>
-          <Link to="/login">Login</Link>
-        </li>
-      </ul>
+      <Nav>
+        <Nav.Link as={NavLink} to="/">
+          All Stories
+        </Nav.Link>
+        <Nav.Link as={NavLink} to="/register">
+          Register
+        </Nav.Link>
+
+        <Nav.Link as={NavLink} to="/login">
+          LogIn
+        </Nav.Link>
+      </Nav>
     );
   }
 
   return (
-    <header className={classes.header}>
-      <div className={classes.logo}>News Stories</div>
-      <nav>{content}</nav>
-      {loggedIn ? <Logout /> : <p></p>}
-    </header>
+    <Navbar collapseOnSelect bg="dark" variant="dark">
+      <Container>
+        <Navbar.Brand as={Link} to="/">
+          <h3 className="display-6">News Stories</h3>
+        </Navbar.Brand>
+        <Navbar.Collapse className="justify-content-center">
+          {content}
+        </Navbar.Collapse>
+        {loggedIn ? <Logout /> : <p></p>}
+      </Container>
+    </Navbar>
   );
 }
 
