@@ -86,7 +86,7 @@ function SearchPage() {
           </Col>
           <Col md={2} xs={4}>
             <Button
-              variant="success"
+              variant="info"
               style={{ width: "100%" }}
               onClick={onSearch}
             >

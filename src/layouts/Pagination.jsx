@@ -14,7 +14,7 @@ function Pagination(props) {
         pageRangeDisplayed={1}
         marginPagesDisplayed={1}
         pageCount={props.totalPages}
-        previousLabel={"PREVIOUS"}
+        previousLabel={"Previous"}
         containerClassName={classes.paginationBttns}
         previousClassName={classes.previousBttn}
         nextClassName={classes.nextBttn}

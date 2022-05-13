@@ -16,13 +16,13 @@ function MainNavigation() {
     content = (
       <Nav>
         <Nav.Link as={NavLink} to="/">
-          All Stories
+          Home
         </Nav.Link>
         <Nav.Link as={NavLink} to="/my-story">
-          My Stories
+          MyStories
         </Nav.Link>
         <Nav.Link as={NavLink} to="/new-story">
-          Add New Story
+          CreateStory
         </Nav.Link>
         <Nav.Link as={NavLink} to="/search">
           Search
@@ -35,7 +35,7 @@ function MainNavigation() {
     content = (
       <Nav>
         <Nav.Link as={NavLink} to="/">
-          All Stories
+         Home
         </Nav.Link>
         <Nav.Link as={NavLink} to="/register">
           Register
@@ -49,10 +49,10 @@ function MainNavigation() {
   }
 
   return (
-    <Navbar collapseOnSelect bg="dark" variant="dark">
+    <Navbar collapseOnSelect bg="info" variant="light" >
       <Container>
         <Navbar.Brand as={Link} to="/">
-          <h3 className="display-6">News Stories</h3>
+          <h3 className="display-8">Blog of NorWester</h3>
         </Navbar.Brand>
         <Navbar.Collapse className="justify-content-center">
           {content}
