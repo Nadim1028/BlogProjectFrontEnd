@@ -1,10 +1,10 @@
 import { useState, useContext,useEffect } from "react";
-import { Button, Card, Row, Col, Container } from "react-bootstrap";
+import { Button, Card, Row, Col, Container,DropdownButton,Dropdown } from "react-bootstrap";
 import EditStoryModal from "../modal/EditStoryModal";
 import AuthContext from "../auth/AuthContext";
 import DeleteStory from "./DeleteStory";
 import ReadMoreReadLess from "./ReadMoreReadLess";
-
+//import Dropdown from 'react-dropdown';
 function StoryItem(props) {
   const authCtx = useContext(AuthContext);
   const token = authCtx.token;
@@ -87,7 +87,19 @@ function StoryItem(props) {
   if (parseInt(authCtx.userId)=== props.authorId) {
     content = (
       <div className="d-flex">
+
         <div className="pe-1 mt-1">
+          <DropdownButton id="dropdown-basic-button" title="Download">
+            <Dropdown.Item onClick={downloadJson}>JSON</Dropdown.Item>
+            <Dropdown.Item onClick={downloadXml} >XML</Dropdown.Item>
+            
+          </DropdownButton>
+        </div>
+
+
+      
+
+        {/* <div className="pe-1 mt-1">
           <Button variant="outline-secondary" onClick={downloadXml} size="sm">
             xml
           </Button>
@@ -96,7 +108,9 @@ function StoryItem(props) {
           <Button variant="outline-secondary" onClick={downloadJson} size="sm">
             json
           </Button>
-        </div>
+        </div> */}
+
+
         <div style={{ width: "100%" }}></div>
         <div className="pe-1">
           <EditStoryModal story={props} />
@@ -116,7 +130,8 @@ function StoryItem(props) {
             <h4>{props.title}</h4>
           </Card.Title>
           <Card.Subtitle className="muted offset-1">
-            - Written by {author.userName}  on {props.publishedDate.substring(0, 10)} 
+            <div> - Written by <b>{author.userName}</b>  on {props.publishedDate.substring(0, 10)} </div>
+           
           </Card.Subtitle>
           <hr />
           <ReadMoreReadLess limit={100}>{props.body}</ReadMoreReadLess>

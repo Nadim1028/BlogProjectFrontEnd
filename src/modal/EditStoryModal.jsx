@@ -1,7 +1,6 @@
-
 import { useState, useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Modal } from "react-bootstrap";
+import { Button, Modal, Col, Container } from "react-bootstrap";
 
 import EditStoryForm from "../stories/EditStoryForm";
 import AuthContext from "../auth/AuthContext";
@@ -16,23 +15,22 @@ function EditStoryModal(props) {
   const token = authCtx.token;
 
   function editStoryHandler(storyId, storyData) {
-    let url = "https://localhost:5001/api/stories/" + storyId;
+    let url = "https://localhost:5001/api/stories";///" + storyId;
 
-   
     fetch(url, {
-        method: "PUT",
-        body: JSON.stringify(storyData),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + token,
-        },
-      }).then(() => {
-        console.log("Story Updated...");
-       //  modalHandler();
-        navigate("/");
-        window.location.reload(false);
-      });
-    }
+      method: "PUT",
+      body: JSON.stringify(storyData),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    }).then(() => {
+      console.log("Story Updated...");
+      modalHandler();
+      navigate("/");
+      window.location.reload(false);
+    });
+  }
 
   function modalHandler() {
     setIsOpen(!isOpen);
@@ -45,8 +43,8 @@ function EditStoryModal(props) {
   };
 
   return (
-    <div>
-      <Button variant="primary" onClick={modalHandler}>
+    <div className="d-inline-flex">
+      <Button variant="success" onClick={modalHandler}>
         Edit
       </Button>
       <Modal show={isOpen}>
